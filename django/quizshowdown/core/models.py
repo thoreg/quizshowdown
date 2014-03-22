@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -5,12 +7,13 @@ class Category(models.Model):
     name = models.CharField(max_length=255)
 
 
+class Answer(models.Model):
+    text = models.CharField(max_length=50)
+    quiz = models.ForeignKey('Quiz')
+    is_solution = models.BooleanField()
+
+
 class Quiz(models.Model):
     question = models.CharField(max_length=255)
-    solution = models.PositiveSmallIntegerField()
-    answer_1 = models.CharField(max_length=255)
-    answer_2 = models.CharField(max_length=255)
-    answer_3 = models.CharField(max_length=255)
-    answer_4 = models.CharField(max_length=255)
-    catetory = models.ForeignKey(Category)
-    # commited_by = models.ForeignKey(User)
+    category = models.ForeignKey(Category)
+    commited_by = models.ForeignKey(User)

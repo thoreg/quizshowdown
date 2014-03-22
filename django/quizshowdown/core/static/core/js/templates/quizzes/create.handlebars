@@ -1,0 +1,52 @@
+<legend>질문을 써주세요~</legend>
+
+<div class="row">
+  <div class="col-md-6">
+      <form role="form">
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="categories" class="col-md-2 control-label">Categories</label>
+              <div class="col-lg-4">
+                {{view Ember.Select
+                       content=categories
+                       optionValuePath="content.id"
+                       optionLabelPath="content.name"
+                       selectionBinding="content.category"
+                       classNames="form-control"}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="questionInput">질문</label>
+              {{input class="form-control" id="questionInput" placeholder="질문" value=question}}
+            </div>
+          </div>
+        </div>
+
+        {{#each answer in answers}}
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>대답</label>
+                {{input class="form-control" value=answer.text}}
+              </div>
+            </div>
+          </div>
+        {{/each}}
+
+        <button type="submit" class="btn btn-primary" {{action "save"}}>Submit</button>
+      </form>
+  </div>
+
+  <div class="col-md-6">
+    <div class="well">
+
+    </div>
+  </div>
+</div>

@@ -40,13 +40,15 @@ INSTALLED_APPS = (
     'registration',
     'djangobower',
     'compressor',
-    'quizshowdown.core'
+    'rest_framework',
+    'quizshowdown.core',
 )
 
 BOWER_INSTALLED_APPS = (
     'bootstrap',
     'ember',
     'ember-data',
+    'ember-data-django-rest-adapter',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -115,3 +117,11 @@ STATIC_ROOT = os.path.join(APP_DIR, 'collected_static/')
 # registration
 ACCOUNT_ACTIVATION_DAYS = 7
 BOWER_COMPONENTS_ROOT = os.path.join(APP_DIR, 'components')
+
+# rest framework
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+}

@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <!-- <link rel="shortcut icon" href="../../assets/ico/favicon.ico"> -->
 
-    <title>Starter Template for Bootstrap</title>
+    <title>Quizshowdown</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static "bootstrap/dist/css/bootstrap.min.css" %}" rel="stylesheet">
@@ -33,13 +33,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">Quizshowdown</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -58,14 +56,12 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static "bootstrap/dist/js/bootstrap.min.js"%}"></script>
 
-      <script src="{% static "handlebars/handlebars.js" %}"></script>
-      <script src="{% static "ember/ember.js" %}"></script>
-    {% compress js %}
-    <script type="text/coffeescript" src="{% static "core/js/application.coffee" %}"></script>
-
-    <script type="text/x-handlebars" src="{% static "core/js/templates/application.handlebars" %}"></script>
-    <script type="text/x-handlebars" src="{% static "core/js/templates/index.handlebars" %}"></script>
-    {% endcompress %}
+    <script src="{% static "handlebars/handlebars.js" %}"></script>
+    <script src="{% static "ember/ember.js" %}"></script>
+    <script src="{% static "ember-data/ember-data.min.js" %}"></script>
+    <script src="{% static "ember-data-django-rest-adapter/build/ember-data-django-rest-adapter.min.js" %}"></script>
+    {% block extra_js%}
+    {% endblock %}
   </body>
 </html>
 
