@@ -11,17 +11,15 @@ App.Router.map ->
 
 App.QuizzesCreateRoute = Em.Route.extend
   model: ->
-    self = this
-    quiz = @store.createRecord('quiz')
-    quiz.get('answers').then ->
-      for _unused in [0..3]
-        quiz.get("answers").addObject(self.store.createRecord('answer'))
-
-    return quiz
+    @store.createRecord('quiz')
 
   setupController: (controller, model)->
     controller.set("model", model)
     controller.set('categories', @store.find('category'))
+    controller.set('answer1', @store.createRecord('answer'))
+    controller.set('answer2', @store.createRecord('answer'))
+    controller.set('answer3', @store.createRecord('answer'))
+    controller.set('solution', @store.createRecord('answer', {is_solution: true}))
 
 App.Category = DS.Model.extend
   name: DS.attr('string')
@@ -39,21 +37,20 @@ App.Answer = DS.Model.extend
 App.QuizzesCreateController = Em.ObjectController.extend
     actions:
         save: ->
-          quiz = @get("model").save()
-          debugger
-          quiz.get("answers").save()
-          # for @get("model.answers")
-          #   console.log answers
-          # @content.save()
+          self = this
+          @get('model').save().then (quiz) ->
+            answer1 = self.get('answer1')
+            answer1.set('quiz', quiz)
+            answer1.save()
 
-          # createTask: function(taskName) {
-          # var person = this.get('model');
-          # var task = this.store.createRecord('task', {name: taskName});
-          # task.set('person', person);
+            answer2 = self.get('answer2')
+            answer2.set('quiz', quiz)
+            answer2.save()
 
-          # task.save().then(function(task) {
-          #   person.get('tasks').pushObject(task);
-          # });
+            answer3 = self.get('answer3')
+            answer3.set('quiz', quiz)
+            answer3.save()
 
-          # this.set('newTask', '');
-
+            solution = self.get('solution')
+            solution.set('quiz', quiz)
+            solution.save()

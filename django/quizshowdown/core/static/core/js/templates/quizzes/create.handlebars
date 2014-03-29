@@ -29,16 +29,10 @@
           </div>
         </div>
 
-        {{#each answer in answers}}
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label>대답</label>
-                {{input class="form-control" value=answer.text}}
-              </div>
-            </div>
-          </div>
-        {{/each}}
+        {{render "answer-row" answer1}}
+        {{render "answer-row" answer2}}
+        {{render "answer-row" answer3}}
+        {{render "answer-row" solution}}
 
         <button type="submit" class="btn btn-primary" {{action "save"}}>Submit</button>
       </form>
