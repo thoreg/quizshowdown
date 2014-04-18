@@ -21,6 +21,12 @@ App.QuizzesCreateRoute = Em.Route.extend
     controller.set('answer3', @store.createRecord('answer'))
     controller.set('solution', @store.createRecord('answer', {is_solution: true}))
 
+
+App.IndexRoute = Em.Route.extend
+  model: ->
+    @store.find "user-profile"
+
+
 App.Category = DS.Model.extend
   name: DS.attr('string')
 
@@ -33,6 +39,18 @@ App.Answer = DS.Model.extend
   text: DS.attr('string')
   quiz: DS.belongsTo('quiz')
   is_solution: DS.attr('boolean')
+
+App.UserProfile = DS.Model.extend
+  first_name: DS.attr('string')
+  last_name: DS.attr('string')
+  highscore: DS.attr('string')
+  username: DS.attr('string')
+
+
+App.IndexController = Em.ArrayController.extend
+  sortProperties: ['highscore']
+  sortAscending: false
+  title: "_welcome_to_quizshowdown_"
 
 App.QuizzesCreateController = Em.ObjectController.extend
     actions:

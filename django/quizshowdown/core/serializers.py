@@ -4,6 +4,12 @@ from rest_framework import serializers
 from quizshowdown.core import models
 
 
+class AnswerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Answer
+        fields = ('id', 'text', 'quiz', 'is_solution')
+
+
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Category
@@ -17,7 +23,13 @@ class QuizSerializer(serializers.ModelSerializer):
         exclude = ('commited_by', )
 
 
-class AnswerSerializer(serializers.ModelSerializer):
+class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.Answer
-        fields = ('id', 'text', 'quiz', 'is_solution')
+        model = models.UserProfile
+        fields = ('id',
+                  'highscore',
+                  'username',
+                  'first_name',
+                  'last_name',
+                  'last_login',
+                  'date_joined')

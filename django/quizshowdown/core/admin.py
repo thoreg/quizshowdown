@@ -12,7 +12,6 @@ class QuizAdmin(admin.ModelAdmin):
         AnswerInline,
     ]
 
-
 admin.site.register(Category)
 admin.site.register(Quiz, QuizAdmin)
 admin.site.register(UserProfile)
