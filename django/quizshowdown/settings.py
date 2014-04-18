@@ -23,10 +23,14 @@ INSTALLED_APPS = (
 )
 
 BOWER_INSTALLED_APPS = (
-    'bootstrap',
-    'ember',
-    'ember-data',
-    'ember-data-django-rest-adapter',
+    'ember-data#1.0.0-beta.7',
+    'bootstrap#3.1.1',
+    'handlebars#1.3.0',
+    'ember-data-django-rest-adapter#1.0.1',
+    'ember#1.5.0',
+    'highlightjs#7.3.0',
+    'jquery#2.0.3',
+    'ember-addons.bs_for_ember#0.6.1'
 )
 
 MIDDLEWARE_CLASSES = (
