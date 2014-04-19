@@ -8,18 +8,14 @@
         </div>
         {{bs-alert message="Welcome to quizshowdown - Nice to see you" type="warning" dismissAfter=2 fade=true}}
         <table class="table highscore">
-        <thead>
-            <tr>
-                <th>Highscore</th>
-                <th>Username</th>
-            </tr>
-        </thead>
-        {{#each}}
-            <tr>
-                <td>{{highscore}}</td>
-                <td>{{username}}</td>
-            </tr>
-        {{/each}}
+            <thead>
+                <tr><th>Highscore</th><th>Username</th></tr>
+            </thead>
+            <tbody>
+            {{#each}}
+                <tr><td>{{highscore}}</td><td>{{username}}</td></tr>
+            {{/each}}
+            </tbody>
         </table>
    </div>
 </div>
