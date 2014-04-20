@@ -30,3 +30,19 @@ table.highscore>tbody>tr>td{
     height: 4em;
     padding: 1em;
 }
+
+.fade_in_slowly {
+    display: none;
+}
+
+.panel {
+    background-color: transparent;
+}
+
+.question {
+    margin: .8em;
+}
+
+.submit_button {
+    margin-right: 1.5em;
+}

@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <div class="row header">
-            <a {{action 'addQuizz'}}>
-                <img class="add" src="/static/img/add.png" />
-            </a>
+        {{#if show_header}}
+        <div class="row header" {{action 'addQuiz'}}>
+            <img class="add" src="/static/img/add.png"/>
             Add a question
         </div>
         {{bs-alert message="Welcome to quizshowdown - Nice to see you" type="warning" dismissAfter=2 fade=true}}
+        {{/if}}
         <table class="table highscore">
             <thead>
                 <tr><th>Highscore</th><th>Username</th></tr>
