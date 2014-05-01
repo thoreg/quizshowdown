@@ -1,46 +1,68 @@
-<legend>질문을 써주세요~</legend>
-
 <div class="row">
-  <div class="col-md-6">
-      <form role="form">
-
-        <div class="row">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label for="categories" class="col-md-2 control-label">Categories</label>
-              <div class="col-lg-4">
-                {{view Ember.Select
-                       content=categories
-                       optionValuePath="content.id"
-                       optionLabelPath="content.name"
-                       selectionBinding="content.category"
-                       classNames="form-control"}}
-              </div>
-            </div>
-          </div>
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel-group" id="accordion">
+      <div class="panel">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+              <img class="add" src="/static/img/add.png" />
+              Add a question
+            </a>
+          </h4>
         </div>
+        <div id="collapseOne" class="panel-collapse collapse">
+          <div class="panel-body">
+            <legend>질문을 써주세요~</legend>
+            <div class="row">
+              <form role="form">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="col-md-6">
+                        <label for="categories" class="control-label">
+                          Choose a category
+                        </label>
+                      </div>
+                      <div class="col-md-6">
+                      {{view Ember.Select
+                              content=categories
+                              optionValuePath="content.id"
+                              optionLabelPath="content.name"
+                              selectionBinding="content.category"
+                              classNames="form-control"}}
+                      </div>
+                    </div>
+                  </div>
+                </div><!-- row -->
 
-        <div class="row">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label for="questionInput">질문</label>
-              {{input class="form-control" id="questionInput" placeholder="질문" value=question}}
-            </div>
-          </div>
-        </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group question">
+                      <label for="questionInput">
+                        질문
+                      </label>
+                      {{textarea class="form-control" id="questionInput" placeholder="질문" value=question}}
+                    </div>
+                  </div>
+                </div>
 
-        {{render "answer-row" answer1}}
-        {{render "answer-row" answer2}}
-        {{render "answer-row" answer3}}
-        {{render "answer-row" solution}}
+                {{render "answer-row" answer1}}
+                {{render "answer-row" answer2}}
+                {{render "answer-row" answer3}}
+                {{render "answer-row" solution}}
 
-        <button type="submit" class="btn btn-primary" {{action "save"}}>Submit</button>
-      </form>
-  </div>
+                <div class="text-right">
+                  <button type="submit" class="btn btn-primary submit_button" {{action "save"}}>
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div><!-- row -->
+          </div><!-- panel-body -->
+        </div><!-- collapseOne -->
+      </div><!-- panel -->
+    </div><!-- accordion -->
+  </div><!-- col-md-8 -->
+</div><!-- row -->
 
-  <div class="col-md-6">
-    <div class="well">
-
-    </div>
-  </div>
-</div>
+{{render "index"}}

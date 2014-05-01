@@ -13,6 +13,8 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{% static "bootstrap/dist/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "css/normalize.css" %}" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Share+Tech' rel='stylesheet' type='text/css'>
     <link href="{% static "css/quizshowdown.css" %}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -60,6 +62,8 @@
     <script src="{% static "ember/ember.js" %}"></script>
     <script src="{% static "ember-data/ember-data.min.js" %}"></script>
     <script src="{% static "ember-data-django-rest-adapter/build/ember-data-django-rest-adapter.min.js" %}"></script>
+    <script src="{% static "ember-addons.bs_for_ember/dist/js/bs-core.min.js" %}"></script>
+    <script src="{% static "ember-addons.bs_for_ember/dist/js/bs-alert.min.js" %}"></script>
     {% block extra_js%}
     {% endblock %}
   </body>

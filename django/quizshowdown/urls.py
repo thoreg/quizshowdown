@@ -10,9 +10,11 @@ from quizshowdown.core.views import IndexView
 admin.autodiscover()
 
 router = routers.DefaultRouter()
+router.register(r'answers', api_views.AnswerViewSet)
 router.register(r'categories', api_views.CategoryViewSet)
 router.register(r'quizzes', api_views.QuizViewSet)
-router.register(r'answers', api_views.AnswerViewSet)
+router.register(r'user-profiles', api_views.UserProfileViewSet)
+
 
 urlpatterns = patterns('',
     url(r'^api/', include(router.urls)),

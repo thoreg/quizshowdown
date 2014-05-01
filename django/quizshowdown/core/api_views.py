@@ -5,6 +5,12 @@ from rest_framework import permissions
 from quizshowdown.core import models, serializers
 
 
+class AnswerViewSet(viewsets.ModelViewSet):
+    permission_classes = (permissions.IsAuthenticated,)
+    queryset = models.Answer.objects.all()
+    serializer_class = serializers.AnswerSerializer
+
+
 class CategoryViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
     queryset = models.Category.objects.all()
@@ -17,11 +23,11 @@ class QuizViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.QuizSerializer
 
     def pre_save(self, obj):
-        print 'aaaaaaaaaaaa'
-        obj.commited_by = self.request.user
+        user_profile = models.UserProfile.objects.get(id=self.request.user.id)
+        obj.commited_by = user_profile
 
 
-class AnswerViewSet(viewsets.ModelViewSet):
+class UserProfileViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
-    queryset = models.Answer.objects.all()
-    serializer_class = serializers.AnswerSerializer
+    queryset = models.UserProfile.objects.all()
+    serializer_class = serializers.UserProfileSerializer
